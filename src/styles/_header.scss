@@ -1,0 +1,54 @@
+.header {
+    display: flex;
+    background-color: #263238;
+    padding: 10px 20px;
+
+    .container {
+        display: flex;
+    }
+
+    .logo {
+        img {
+            width: 60px;
+            height: 35px;
+        }
+    }
+    .search-form {
+        width: 300px;
+        button {
+            background-color: #AB2E20;
+            border: none;
+        }
+    }
+    .avatar {
+        margin-left: auto;
+        img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-size: cover;
+            border: 1
+            px solid white;
+        }
+    }
+
+    .notification {
+        margin-top: 0px;
+        margin-left: 50px;
+        font-size: 22px;
+        color: white;
+        position: relative;
+
+        span {
+            background: #AB2E20;
+            border-radius: 50%;
+            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            padding: 3px;
+            position: absolute;
+            margin-left: -9px;
+            margin-top: -3px;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+.login-form, .register-form {
+    margin: 0 auto;
+    line-height: 50%;
+    background: #B0BEC5;
+    padding: 10px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/asset/images/login_background.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+
+    .ant-form {
+        background: rgba(0, 0, 0, .5);
+        padding: 20px 30px;
+        border-radius: 10px;
+
+        .remember-password {
+            color: gray;
+        }
+
+        .ant-form-item-label {
+            label {
+                color: gray;                
+            }
+        }
+
+        .ant-form-item {
+            color: gray;
+            &:last-child {
+                margin: 0;
+            }
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .login-form-button {
+            margin-right: 5px;
+        }
+    }
+}
+
+.login-form {
+    text-align: center;
+    .ant-form {
+        width: 30%;
+    }
+}
+
+.register-form {
+    .ant-form {
+        width: 40%;
+        .form-action {
+            .ant-form-item-control {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+        
+    }
+}
