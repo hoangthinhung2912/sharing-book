@@ -33,6 +33,8 @@
   ],
   "devDependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.11.0",
+    "redux-persist-transform-filter": "^0.0.18",
+    "why-did-you-update": "^1.0.6"
   }
 }

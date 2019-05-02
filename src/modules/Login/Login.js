@@ -55,4 +55,7 @@ class Login extends React.Component {
   }
 }
 
-export default Form.create({ name: 'login_form' })(Login);
+const LoginEnhancer = Form.create({ name: 'login_form' })(Login);
+LoginEnhancer.displayName = 'LoginEnhancer';
+
+export default LoginEnhancer;

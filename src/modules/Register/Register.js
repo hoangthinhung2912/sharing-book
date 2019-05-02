@@ -24,10 +24,9 @@ class Register extends React.Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props.authAppState;
-    console.log(this.props.authAppState);
+    const { error, isLogged } = this.props.authAppState;
+
     if (!equals(error, prevProps.authAppState.error) && error) {
-      console.log(error)
       const formFields = Object.keys(error).reduce((acc, key) => {
         return {
           ...acc,
@@ -39,6 +38,10 @@ class Register extends React.Component {
       }, {});
 
       this.props.form.setFields(formFields)
+    }
+
+    if (!equals(isLogged, prevProps.authAppState.isLogged) && isLogged) {
+      this.props.history.push('/');
     }
   }
 

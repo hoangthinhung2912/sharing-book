@@ -14,13 +14,16 @@ const { store: storeEnhancer, persistor } = configStore();
 
 export const store = storeEnhancer;
 
+const {whyDidYouUpdate} = require('why-did-you-update');
+whyDidYouUpdate(React);
+
 ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate loading={(<h1>Loading...</h1>)} persistor={persistor}>
-            <App />
-        </PersistGate>
-    </Provider>
-    , document.getElementById('root')
+  <Provider store={store}>
+    <PersistGate loading={(<h1>Loading...</h1>)} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+  , document.getElementById('root')
 );
 
 serviceWorker.unregister();

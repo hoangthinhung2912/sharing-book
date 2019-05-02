@@ -9,9 +9,11 @@ export default class Home extends React.Component {
             <div className="home-wrap">
                 <Header></Header>
                 <div className="container">
-                    <Post></Post> 
+                    <Post></Post>
                 </div>
             </div>
         );
     }
 }
+
+Home.displayName = 'Home';
