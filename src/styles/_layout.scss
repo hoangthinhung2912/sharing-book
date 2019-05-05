@@ -1,12 +1,21 @@
 .container {
-    width: 1140px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .home-wrap {
-    background-color: #CFD8DC;
-    height: 100vh;
+  background-color: #CFD8DC;
+  min-height: 100vh;
+  padding: 0.1px;
+  display: flex;
+  flex-direction: column;
+
+  .home-container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 1px;
+  }
 }

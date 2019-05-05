@@ -14,7 +14,7 @@ export default class App extends React.Component {
           <AuthRoute exact path="/login" component={Login} middlewares={[{ middleware: hasntLogged, redirect: '/' }]} />
           <AuthRoute path="/register" component={Register} middlewares={[{ middleware: hasntLogged, redirect: '/' }]} />
           <AuthRoute exact path="/home" component={Home} middlewares={[{ middleware: hasLogged, redirect: '/login' }]} />
-          <AuthRoute exact path="/" component={Home} middlewares={[]} />
+          <AuthRoute exact path="/" component={Home} middlewares={[{ middleware: hasLogged, redirect: '/login' }]} />
           {/* <Route exact path="/" component={Home} /> */}
           <Route component={NotFound} />
         </Switch>

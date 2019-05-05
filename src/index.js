@@ -15,7 +15,7 @@ const { store: storeEnhancer, persistor } = configStore();
 export const store = storeEnhancer;
 
 const {whyDidYouUpdate} = require('why-did-you-update');
-whyDidYouUpdate(React);
+// whyDidYouUpdate(React);
 
 ReactDOM.render(
   <Provider store={store}>

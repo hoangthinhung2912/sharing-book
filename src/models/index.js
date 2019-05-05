@@ -1,0 +1,1 @@
+export { default as PostModel } from './Post';

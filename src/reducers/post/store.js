@@ -1,10 +1,9 @@
-import { AuthTypes } from '../../actions';
+import { PostTypes } from '../../actions';
 
 const INIT_STATE = {
-  token: null,
-  payload: null,
+  byId: {},
+  allIds: [],
   appState: {
-    isLogged: false,
     loading: false,
     error: null,
   }
@@ -12,35 +11,29 @@ const INIT_STATE = {
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
-    case AuthTypes.REGISTER_PENDING:
-    case AuthTypes.LOGIN_PENDING:
+    case PostTypes.GET_LIST_POST_PENDING:
       return {
-        ...state,
+        ...INIT_STATE,
         appState: {
-          ...state.appState,
           loading: true,
           error: null,
         }
       };
 
-    case AuthTypes.REGISTER_SUCCESS:
-    case AuthTypes.LOGIN_SUCCESS:
+    case PostTypes.GET_LIST_POST_SUCCESS:
       return {
         ...state,
-        token: action.payload.token,
+        ...action.payload.data,
         appState: {
-          isLogged: true,
           loading: false,
           error: null,
         }
       };
 
-    case AuthTypes.REGISTER_FAIL:
-    case AuthTypes.LOGIN_FAIL:
+    case PostTypes.GET_LIST_POST_FAIL:
       return {
         ...state,
         appState: {
-          ...state.appState,
           loading: false,
           error: action.payload.error
         }

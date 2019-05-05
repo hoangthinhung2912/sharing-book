@@ -13,9 +13,9 @@ const request = (options = {}) => {
   const token = store.getState().auth.token;
 
   const axiosApi = axios.create({
-    baseURL: 'http://192.168.1.2:8001',
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Token ${token}`
     },
     ...options
   });

@@ -1,15 +1,46 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { compose, equals } from 'ramda';
+import { AuthActions } from '../../actions';
+import { getAuthAppState } from '../../reducers/auth/select';
 import {
   Form, Icon, Input, Button, Checkbox,
 } from 'antd';
 import { Link } from 'react-router-dom';
 
+const mapStateToProps = (state) => {
+	return {
+    authAppState: getAuthAppState(state),
+	};
+};
+
+const mapDispatchToProps = {
+  login: AuthActions.login
+};
+
 class Login extends React.Component {
+  componentDidUpdate(prevProps) {
+    const { error, isLogged } = this.props.authAppState;
+
+    if (!equals(error, prevProps.authAppState.error) && error && error.non_field_errors) {
+      this.props.form.setFields({
+        username: {
+          value: this.props.form.getFieldValue('username'),
+          errors: error.non_field_errors.map(Error)
+        }
+      });
+    }
+
+    if (!equals(isLogged, prevProps.authAppState.isLogged) && isLogged) {
+      this.props.history.push('/');
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.login(values);
       }
     });
   }
@@ -55,7 +86,7 @@ class Login extends React.Component {
   }
 }
 
-const LoginEnhancer = Form.create({ name: 'login_form' })(Login);
-LoginEnhancer.displayName = 'LoginEnhancer';
-
-export default LoginEnhancer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  Form.create({ name: 'login_form' })
+)(Login);
