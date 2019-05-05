@@ -66,16 +66,10 @@ class Login extends React.Component {
           </Form.Item>
           <Form.Item>
             <div>
-              {getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: true,
-              })(
-                <Checkbox className="remember-password">Nhớ mật khẩu</Checkbox>
-              )}
               <a className="login-form-forgot" href="hhh">Quên mật khẩu</a>
             </div>
 
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button type="primary" htmlType="submit" className="login-form-button" loading={this.props.authAppState.loading}>
               Đăng nhập
             </Button>
             Or <Link to="/register">Đăng kí ngay!</Link>

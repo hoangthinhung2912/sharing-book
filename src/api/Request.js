@@ -11,12 +11,14 @@ const debugError = er => {
 
 const request = (options = {}) => {
   const token = store.getState().auth.token;
+  const headers = {};
+  if (token) {
+    headers.Authorization = `Token ${token}`;
+  }
 
   const axiosApi = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-    headers: {
-      'Authorization': `Token ${token}`
-    },
+    headers: headers,
     ...options
   });
 

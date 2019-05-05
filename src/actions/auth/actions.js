@@ -1,5 +1,8 @@
 import * as ActionTypes from './constants';
+import Cookies from 'universal-cookie';
 import { AuthRequest } from '../../api';
+
+const cookies = new Cookies();
 
 export const register = data => dispatch => {
   dispatch({
@@ -30,7 +33,10 @@ export const login = data => dispatch => {
     type: ActionTypes.LOGIN_PENDING,
   });
 
-  return AuthRequest.login(data)
+  return AuthRequest.login({
+    ...data,
+    csrfmiddlewaretoken: cookies.get('csrftoken')
+  })
     .then((response) => {
       dispatch({
         type: ActionTypes.LOGIN_SUCCESS,
