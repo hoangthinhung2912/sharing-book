@@ -12,13 +12,22 @@ const debugError = er => {
 const request = (options = {}) => {
   const token = store.getState().auth.token;
   const headers = {};
+  const formDataHeaders = {};
+
   if (token) {
     headers.Authorization = `Token ${token}`;
+    formDataHeaders.Authorization = `Token ${token}`;
   }
 
   const axiosApi = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: headers,
+    ...options
+  });
+
+  const axiosApiWithFromData = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: formDataHeaders,
     ...options
   });
 
@@ -37,6 +46,12 @@ const request = (options = {}) => {
     },
     custom(config) {
       return axios(config).then(debugData).catch(debugError);
+    },
+    postFormData(url, data) {
+      return axiosApiWithFromData.post(url, data).then(debugData).catch(debugError);
+    },
+    putFormData(url, data) {
+      return axiosApiWithFromData.put(url, data).then(debugData).catch(debugError);
     }
   };
 };

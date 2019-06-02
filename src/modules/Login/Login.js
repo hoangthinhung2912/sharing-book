@@ -32,7 +32,7 @@ class Login extends React.Component {
     }
 
     if (!equals(isLogged, prevProps.authAppState.isLogged) && isLogged) {
-      this.props.history.push('/');
+      this.props.history.push('/share');
     }
   }
 
@@ -65,10 +65,6 @@ class Login extends React.Component {
             )}
           </Form.Item>
           <Form.Item>
-            <div>
-              <a className="login-form-forgot" href="hhh">Quên mật khẩu</a>
-            </div>
-
             <Button type="primary" htmlType="submit" className="login-form-button" loading={this.props.authAppState.loading}>
               Đăng nhập
             </Button>

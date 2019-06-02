@@ -10,14 +10,12 @@ export default class Actions extends React.Component {
         <div className="post-action-info">
           <div className="action-info">
             <Icon className="action-icon" type="like" />
-            <span>12</span>
-            <Icon className="action-icon" type="dislike" />
-            <span>1</span>
+            <span>{this.props.likes}</span>
           </div>
-          <a className="comment-info" onClick={this.props.showComment}>20 bình luận</a>
+          <a className="comment-info" onClick={this.props.showComment}>{this.props.totalComment} bình luận</a>
         </div>
         <div className="post-action">
-          <div className="like-btn">
+          <div className={"like-btn " + (this.props.is_like_own ? 'liked' : '')} onClick={this.props.handleLikePost}>
             <Icon className="action-icon" type="like" />
             <span>Thích</span>
           </div>

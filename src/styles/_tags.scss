@@ -1,18 +1,35 @@
-.home-wrap {
-  .tags {
-    width: 40%;
+.tags {
+  .ant-tag {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background: #fafafa;
+    margin-bottom: 3px;
+    margin-top: 3px;
+
+    &.ant-tag-checkable-checked {
+      background-color: #ab2e1f;
+    }
+  }
+}
+
+.right-tags {
+  width: 40%;
+  right: 0px;
+  position: absolute;
+
+  .tags-wrap {
+    position: fixed;
+    padding: 15px;
+    background: #CFD8DC;
+  }
+
+  .recommend-post-wrap {
+    margin-top: 100px;
     padding: 15px;
 
-    .ant-tag {
-      border: 1px solid #d9d9d9;
-      border-radius: 4px;
-      background: #fafafa;
-      margin-bottom: 3px;
-      margin-top: 3px;
-
-      &.ant-tag-checkable-checked {
-        background-color: #1890ff;
-      }
+    .recommend-title {
+      margin-top: 20px;
+      font-weight: bold;
     }
   }
 }

@@ -4,6 +4,16 @@ import { AuthRequest } from '../../api';
 
 const cookies = new Cookies();
 
+export const getProfile = () => dispatch => {
+  return AuthRequest.getProfile()
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.GET_PROFILE,
+        payload: data
+      });
+    });
+  }
+
 export const register = data => dispatch => {
   dispatch({
     type: ActionTypes.REGISTER_PENDING,
@@ -44,6 +54,7 @@ export const login = data => dispatch => {
           token: response.key
         }
       })
+      dispatch(getProfile());
     })
     .catch((error) => {
       dispatch({
@@ -54,3 +65,45 @@ export const login = data => dispatch => {
       });
     });
 };
+
+export const logout = () => dispatch => {
+  dispatch({
+    type: ActionTypes.LOGOUT_PENDING,
+  });
+
+  return AuthRequest.logout()
+    .then((response) => {
+      dispatch({
+        type: ActionTypes.LOGOUT_SUCCESS,
+      })
+      dispatch(getProfile());
+    })
+    .catch((error) => {
+      dispatch({
+        type: ActionTypes.LOGOUT_FAIL,
+        payload: {
+          error
+        }
+      });
+    });
+};
+
+export const editUser = (data) => (dispatch) => {
+  AuthRequest.editUser(data)
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.EDIT_USER,
+        payload
+      });
+    })
+}
+
+export const changePassword = (data) => (dispatch) => {
+  AuthRequest.changePassword(data)
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.CHANGE_PASSWORD,
+        payload
+      });
+    })
+}

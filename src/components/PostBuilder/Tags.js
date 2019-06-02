@@ -5,23 +5,19 @@ import { BOOK_TYPES } from '../../configs';
 
 import { Tag } from 'antd';
 
-class PostTags extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      listTag: []
-    };
+class Tags extends React.Component {
+  static propTypes = {
   }
 
-  isTagChecked = (tagId) => this.state.listTag.includes(tagId);
+  static defaultProps = {
+  }
+
+  isTagChecked = (tagId) => tagId === this.props.tag;
 
   handleChangeTag = (tagId) => (checked) => {
-    const newTags = checked ? [...this.state.listTag, tagId] : this.state.listTag.filter(id => id !== tagId);
-    this.props.onSearchByTags({book_types: newTags});
-    this.setState({
-      listTag: newTags
-    });
+    if (checked) {
+        this.props.onChangeTag(tagId);
+    }
   }
 
   render() {
@@ -39,4 +35,4 @@ class PostTags extends React.Component {
   }
 }
 
-export default PostTags
+export default Tags

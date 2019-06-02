@@ -2,7 +2,7 @@ import { AuthTypes } from '../../actions';
 
 const INIT_STATE = {
   token: null,
-  payload: null,
+  userInfo: null,
   appState: {
     isLogged: false,
     loading: false,
@@ -45,6 +45,12 @@ export default (state = INIT_STATE, action) => {
           error: action.payload.error
         }
       };
+    
+    case AuthTypes.GET_PROFILE:
+      return {
+        ...state,
+        userInfo: action.payload.userInfo
+      }
 
     default:
       return state;
