@@ -41,6 +41,7 @@ class PostEditModal extends React.Component {
     render() {
         return (
             <PostBuilder
+                type={this.props.post.post_type}
                 {...this.props.post}
                 onPost={this.handleEditPost}
                 onRemove={this.handleRemove}

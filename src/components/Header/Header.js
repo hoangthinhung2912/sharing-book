@@ -11,20 +11,31 @@ import Notification from './Notification';
 import User from './User';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import { getPostType } from '../../reducers/post/select';
+import { getListNotification } from '../../reducers/auth/select';
+import { withRouter } from "react-router";
+
 
 const mapStateToProps = (state) => {
   return {
     postType: getPostType(state),
     user: state.auth.userInfo,
+    notifications: getListNotification(state),
   };
 };
 
 const mapDispatchToProps = {
   search: PostActions.searchPost,
   logout: AuthActions.logout,
+  getNotifications: AuthActions.getNotifications,
+  seenNotification: AuthActions.seenNotifications,
 };
 
-export class Header extends React.Component {
+class Header extends React.Component {
+
+  componentDidMount() {
+    this.props.getNotifications();
+  }
+
   test = (match, location) => {
     if (!match) {
       return false;
@@ -39,6 +50,13 @@ export class Header extends React.Component {
 
   logout = () => {
     this.props.logout();
+    this.props.history.push('/login');
+  }
+
+  onSeenNotification = (data, seen) => {
+    if (!seen) {
+      this.props.seenNotification(data);
+    }
   }
 
   render() {
@@ -52,7 +70,7 @@ export class Header extends React.Component {
           </div>
           <div className="search-form">
             <Search
-              placeholder="input search text"
+              placeholder="Hãy nhập gì đó ..."
               onSearch={value => this.onSearch(value)}
               enterButton
             />
@@ -65,7 +83,10 @@ export class Header extends React.Component {
               <NavLink to='/home' isActive={this.test} ><User user={this.props.user} /></NavLink>
             </div>
           </If>
-          <Notification />
+          <Notification 
+            notifications={this.props.notifications}
+            handleSeenNotification={this.onSeenNotification}
+          />
           <div className="logout-icon">
             <Icon type="logout" onClick={this.logout}/>
           </div>
@@ -75,4 +96,4 @@ export class Header extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

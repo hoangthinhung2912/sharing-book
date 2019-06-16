@@ -5,3 +5,7 @@
 @import './comment.scss';
 @import './tags';
 @import './postModal';
+
+html, body {
+    scroll-behavior: smooth;
+}

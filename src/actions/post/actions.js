@@ -235,24 +235,6 @@ export const editPost = (postId, data) => (dispatch) => {
     })
 }
 
-export const editProfile = (id, data) => (dispatch) => {
-  // dispatch({
-  //   type: ActionTypes.EDIT_COMMENT,
-  //   payload: {
-  //     ...data,
-  //     postId
-  //   }
-  // });
-
-  PostRequest.editProfile(id, data)
-    .then((data) => {
-      dispatch({
-        type: ActionTypes.EDIT_POST,
-        payload
-      });
-    })
-}
-
 
 export const editComment = (postId, commentId, data) => (dispatch) => {
   // dispatch({
@@ -389,4 +371,28 @@ export const getListDonation = (params) => (dispatch) => {
         }
       });
     });
+};
+
+export const registerBook = (params) => (dispatch) => {
+  PostRequest.registerBook(params)
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.REGISTER_BOOK,
+        payload: {
+          data
+        }
+      });
+    })
+};
+
+export const recommendBook = (params) => (dispatch) => {
+  PostRequest.recommendBook(params)
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.RECOMMEND_BOOK,
+        payload: {
+          data
+        }
+      });
+    })
 };

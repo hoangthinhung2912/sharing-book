@@ -78,11 +78,21 @@ export class Post extends React.Component {
   editPost = (data) => {
     const formData = new FormData();
     data.images.forEach(item => formData.append('images', item.originFileObj));
+    formData.append('name', data.name);
     formData.append('content', data.content);
     formData.append('book_type', data.book_type);
     formData.append('removed_images', data.removed_images);
     formData.append('post_type', data.post_type); 
+    formData.append('location', data.location);
+    formData.append('price', data.price)
 
+    this.props.editPost(this.props.post.id, formData);
+  }
+
+  markSold = (post_type, data) => {
+    const formData = new FormData();
+    formData.append('is_sold', data)
+    formData.append('post_type', post_type);
     this.props.editPost(this.props.post.id, formData);
   }
 
@@ -90,7 +100,7 @@ export class Post extends React.Component {
     const { post } = this.props;
 
     return (
-      <div className="post-wrap">
+      <div className="post-wrap" id={post.id}>
         <PostDetail
           userCreated={{
             id: post.user_id,
@@ -106,14 +116,17 @@ export class Post extends React.Component {
           book_type={post.book_type}
           post_type={post.post_type}
           user={this.props.user}
+          name={post.name}
           location={post.location}
           price={post.price}
+          is_sold={post.is_sold}
           handleDeletePost={this.handleDeletePost}
           handleEditPost={this.editPost}
+          handleMarkSold={this.markSold}
         />
         <Actions
           showComment={this.showComment}
-          totalComment={post.total_comments}
+          totalComment={this.props.comments.length}
           likes={post.likes}
           is_like_own={post.is_like_own}
           handleLikePost={this.likePost}

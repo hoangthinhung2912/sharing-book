@@ -52,8 +52,11 @@ const PostRequest = {
   getListDonation() {
     return Request().get('/api/v1/accounts/donations/');
   },
-  editProfile(id, data) {
-    return Request().putFormData('/api/v1/accounts/profiles/' + id + '/', data);
+  registerBook(data) {
+    return Request().postFormData('/api/v1/posts/register/', data);
+  },
+  recommendBook() {
+    return Request().get('/api/v1/posts/books/').then(PostNormalize.getListPost);
   },
 };
 

@@ -25,6 +25,18 @@ const AuthRequest = {
   changePassword(data) {
     return Request().post('/rest-auth/password/change/', data);
   },
+
+  getNotifications() {
+    return Request().get('/api/v1/posts/notifications/');
+  },
+
+  seenNotifications(data) {
+    return Request().put('/api/v1/posts/notifications/' + data + '/');
+  },
+
+  editProfile(id, data) {
+    return Request().putFormData('/api/v1/accounts/profiles/' + id + '/', data);
+  },
 };
 
 export default AuthRequest;

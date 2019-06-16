@@ -55,6 +55,7 @@ export class Share extends React.Component {
   onCreatePost = (data) => {
     const formData = new FormData();
     data.images.forEach(item => formData.append('images', item.originFileObj));
+    formData.append('name', data.name);
     formData.append('content', data.content);
     formData.append('book_type', data.book_type);
     formData.append('post_type', 1);

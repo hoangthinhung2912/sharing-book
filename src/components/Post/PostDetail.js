@@ -25,7 +25,11 @@ export default class PostDetail extends React.Component {
       content: this.props.content,
       images: this.transformImagesData(this.props.images),
       book_type: this.props.book_type,
-      post_type: this.props.post_type
+      post_type: this.props.post_type,
+      location: this.props.location,
+      price: this.props.price,
+      is_sold: this.props.is_sold,
+      name: this.props.name
     };
   }
 
@@ -60,11 +64,27 @@ export default class PostDetail extends React.Component {
                 post={this.postEditData}
                 toggleEdit={this.props.handleEditPost}
                 onDelete={this.props.handleDeletePost}
+                onMarkSold={this.props.handleMarkSold}
               />
             </If>
           </div>
         </div>
         <div className="post-detail">
+          <If condition={this.props.post_type === 1 & this.props.is_sold}>
+            <div className='location'>
+              <span className="sold">Đã hết</span>
+            </div>
+          </If>
+          <If condition={this.props.post_type === 1 & !this.props.is_sold}>
+            <div className='location'>
+              <span className="sold">Vẫn còn</span>
+            </div>
+          </If>
+          <If condition={this.props.post_type === 1}>
+            <div className='location'>
+              <span>Sách:</span> {this.props.name}
+            </div>
+          </If>
           <If condition={this.props.post_type === 1}>
             <div className='location'>
               <span>Giá:</span> {this.props.price} VNĐ

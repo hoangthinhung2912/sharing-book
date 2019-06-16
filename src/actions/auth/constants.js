@@ -18,3 +18,12 @@ export const EDIT_USER = `${prefix}.EDIT_USER`;
 
 export const CHANGE_PASSWORD = `${prefix}.CHANGE_PASSWORD`;
 
+export const GET_NOTIFICATIONS = `${prefix}.GET_NOTIFICATIONS`;
+
+export const SEEN_NOTIFICATIONS = `${prefix}.SEEN_NOTIFICATIONS`;
+
+export const EDIT_PROFILE = `${prefix}.EDIT_PROFILE`;
+
+
+
+

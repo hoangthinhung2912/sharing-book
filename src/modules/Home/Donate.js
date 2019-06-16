@@ -24,6 +24,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getListPost: PostActions.getListDonatePost,
   getListDonation: PostActions.getListDonation,
+  deletePost: PostActions.deletePost,
   addPost: PostActions.addPost,
   changePostType: PostActions.changePostType,
   searchByTags: PostActions.searchWithPostType
@@ -63,6 +64,10 @@ export class Donate extends React.Component {
     this.props.searchByTags(3, data);
   }
 
+  onDeletePost = (data) => {
+    this.props.deletePost(data.post_type, data.id);
+  }
+
   render() {
     return (
       <div className="home-wrap">
@@ -80,7 +85,7 @@ export class Donate extends React.Component {
                 </When>
                 <When condition={this.props.listPost.length}>
                   {this.props.listPost.map(post => (
-                    <Post key={post.id} post={post} />
+                    <Post key={post.id} post={post} onDeletePost={this.onDeletePost}/>
                   ))}
                 </When>
               </Choose>

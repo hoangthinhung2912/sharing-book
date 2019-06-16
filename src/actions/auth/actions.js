@@ -93,7 +93,9 @@ export const editUser = (data) => (dispatch) => {
     .then((data) => {
       dispatch({
         type: ActionTypes.EDIT_USER,
-        payload
+        payload: {
+          data
+        }
       });
     })
 }
@@ -103,7 +105,45 @@ export const changePassword = (data) => (dispatch) => {
     .then((data) => {
       dispatch({
         type: ActionTypes.CHANGE_PASSWORD,
-        payload
+        payload: {
+          data
+        }
+      });
+    })
+}
+
+export const getNotifications = () => (dispatch) => {
+  AuthRequest.getNotifications()
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.GET_NOTIFICATIONS,
+        payload: {
+          data
+        }
+      });
+    })
+}
+
+export const seenNotifications = (data) => (dispatch) => {
+  AuthRequest.seenNotifications(data)
+    .then((response) => {
+      dispatch({
+        type: ActionTypes.SEEN_NOTIFICATIONS,
+        payload: {
+          response
+        }
+      });
+    })
+}
+
+export const editProfile = (id, data) => (dispatch) => {
+  AuthRequest.editProfile(id, data)
+    .then((data) => {
+      dispatch({
+        type: ActionTypes.EDIT_PROFILE,
+        payload: {
+          data
+        }
       });
     })
 }

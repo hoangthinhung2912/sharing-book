@@ -52,5 +52,7 @@ export const GET_LIST_DONATION_PENDING = `${prefix}.GET_LIST_DONATION_PENDING`;
 export const GET_LIST_DONATION_SUCCESS = `${prefix}.GET_LIST_DONATION_SUCCESS`;
 export const GET_LIST_DONATION_FAIL = `${prefix}.GET_LIST_DONATION_FAIL`;
 
-export const EDIT_PROFILE = `${prefix}.EDIT_PROFILE`;
+export const REGISTER_BOOK = `${prefix}.REGISTER_BOOK`;
+
+export const RECOMMEND_BOOK = `${prefix}.RECOMMEND_BOOK`;
 

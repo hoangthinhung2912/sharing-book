@@ -24,6 +24,10 @@ export default class PostAction extends React.Component {
         });
     }
 
+    handelMarkSold = () => {
+        this.props.onMarkSold(1, !this.props.post.is_sold);
+    }
+
     handleOk = e => {
         this.setState({
             visible: false,
@@ -51,6 +55,16 @@ export default class PostAction extends React.Component {
                 <Menu.Item onClick={this.showDeleteConfirm}>
                     <span>Xóa</span>
                 </Menu.Item>
+                <If condition={!this.props.post.is_sold & this.props.post.post_type === 1}>
+                    <Menu.Item onClick={this.handelMarkSold}>
+                        <span>Đánh dấu là đã bán</span>
+                    </Menu.Item>
+                </If>
+                <If condition={this.props.post.is_sold & this.props.post.post_type === 1}>
+                    <Menu.Item onClick={this.handelMarkSold}>
+                        <span>Đánh dấu là chưa bán</span>
+                    </Menu.Item>
+                </If>
             </Menu>
         );
     }

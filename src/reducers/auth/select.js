@@ -6,3 +6,9 @@ export const getAuthAppState = compose(
   authState => authState.appState,
   getAuthState,
 );
+
+export const getListNotification = compose(
+  authState => authState.notifications,
+  getAuthState,
+);
+

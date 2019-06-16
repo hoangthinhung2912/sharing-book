@@ -117,3 +117,26 @@
         }
     }
 }
+
+.notification-items {
+    max-height: 200px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #666;
+        border-radius: 20px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #ddd;
+        border-radius: 20px;
+    }
+
+    .seen {
+        background: #CFD8DC;
+    }
+}

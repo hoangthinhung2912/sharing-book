@@ -3,6 +3,7 @@ import { AuthTypes } from '../../actions';
 const INIT_STATE = {
   token: null,
   userInfo: null,
+  notifications: [],
   appState: {
     isLogged: false,
     loading: false,
@@ -52,6 +53,45 @@ export default (state = INIT_STATE, action) => {
         userInfo: action.payload.userInfo
       }
 
+    case AuthTypes.GET_NOTIFICATIONS:
+      return {
+        ...state,
+        notifications: action.payload.data
+      }
+  
+    case AuthTypes.SEEN_NOTIFICATIONS:
+      return {
+        ...state,
+        notifications: state.notifications.map(item => 
+          item.id === action.payload.response ? item.seen=true: item
+        )
+      }
+    
+    case AuthTypes.EDIT_PROFILE:
+      return {
+        ...state,
+        userInfo: action.payload.data
+      }
+    
+    case AuthTypes.EDIT_USER:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          user_name: action.payload.data.username
+        }
+      }
+
+    case AuthTypes.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        token: null,
+        userInfo: null,
+        appState: {
+          ...state.appState,
+          isLogged: false,
+        }
+      }
     default:
       return state;
   }

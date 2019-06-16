@@ -1,3 +1,6 @@
+.mt-3 {
+  margin-top: 1rem;
+}
 .post-empty {
   background: #fff;
   display: flex;
@@ -72,6 +75,10 @@
     .location {
       span {
         font-weight: bold;
+      }
+
+      .sold {
+        color: #ab2e20;
       }
     }
 
@@ -173,6 +180,10 @@
   background: white;
   margin-bottom: 15px;
 
+  .ant-form-item {
+    margin-bottom: 0px;
+  }
+
   .icon {
     font-size: 20px;
   }
@@ -220,6 +231,12 @@
   margin-top: 10px;
   padding: 0px;
   border-radius: 5px;
+  padding-bottom: 4px;
+
+  a {
+    color: black;
+  }
+  
   &:hover {
     box-shadow: 2px 3px #9E9E9E;
   }
@@ -230,6 +247,7 @@
   }
   .post-detail {
     padding: 4px;
+    margin-bottom: 10px;
   }
   
   .price {
@@ -244,6 +262,7 @@
     max-height: 32px;      /* fallback */
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
+    margin-top: 10px;
   }
 }
 
@@ -271,13 +290,24 @@
 }
 
 .edit-profile {
-  margin-top: 130px;
-  position: fixed;
+  margin-top: 115px;
   right: 0px;
-  width: 40%;
+
+  .ant-form-item {
+    margin-bottom: 0px;
+  }
 
   .title {
     font-weight: bold;
+
+    .active {
+      color: #AB2E1F;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   .field {
@@ -335,5 +365,13 @@
     justify-content: space-between;
     align-items: center;
     margin-right: 26px;
+  }
+}
+
+.profile-container {
+  .recommend-post-wrap {
+    padding: 0 !important;
+    margin-top: 10px !important;
+    padding-right: 20px !important;
   }
 }
